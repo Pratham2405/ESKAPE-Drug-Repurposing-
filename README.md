@@ -39,15 +39,15 @@ You can install Python dependencies using:
 ### 1. Ligand Preparation
 
 1. **Organize Ligands:**  
-   Place all your ligand files (e.g., `.sdf` or `.mol2`) in a single, separate directory.
+   Place all your ligand files ( in `.pdbqt` format) in a single, separate directory.
 
 2. **Sanitize Molecules:**  
-   Use `RDKit_Validation.py` to check and sanitize your ligand structures:
+   Use `RDKit_validation&addH.py` to check and sanitize your ligand structures:
 ---
 
 3. **Prepare Ligands with Open Babel:**  
 Run the following command in your terminal to convert and prepare ligands:
----
+`obabel input_PDB_file_name -O output_PDB_file_name -xr --partialcharge gasteiger`
 This script will convert your ligands into the required format for docking.
 
 ---
@@ -108,5 +108,4 @@ Open `VS_Script_2.py` and enter the appropriate paths for:
 - Config file
 
 2. **Run the Screening Script:**  
-Execute the script to start the virtual screening:
-python VS_Script_2.py
+Execute the script to start the virtual screening. You would obtain a CSV file ranking the ligands based on Binding Affinity(kJ/mol).
