@@ -87,7 +87,7 @@ Record the coordinates of the center of the binding pocket for use in the dockin
 - Choose exhaustiveness, number of CPUs, and other Vina parameters.
 
 Example:
-center_x = 12.34
+``center_x = 12.34
 center_y = 56.78
 center_z = 90.12
 size_x = 20
@@ -95,7 +95,7 @@ size_y = 20
 size_z = 20
 exhaustiveness = 8
 cpu = 4
-
+``
 
 ---
 
@@ -106,6 +106,9 @@ Open `VS_Script_2.py` and enter the appropriate paths for:
 - Ligand directory
 - Receptor file
 - Config file
+- Vina
+- Output Directory(all the `.out` and `.log` files would be saved in this folder)
+- Faulty structures directory
 
 2. **Run the Screening Script:**  
 Execute the script to start the virtual screening. You would obtain a CSV file ranking the ligands based on Binding Affinity(kJ/mol).
