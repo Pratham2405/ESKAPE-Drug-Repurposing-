@@ -142,9 +142,13 @@ Vina requires an a priori 3D search space in the form of a grid box where it can
 
 In order to run `VS_Script.py`, the path of the various input files and directories on your device is to be specified in the code snippet shown below:
 
-![Loading Protein Using PyMol](addpolarH.png " Loading Protein Using PyMol")
+![Adding Path to VS_Script.py](VS_Code_Snippet.png "Adding Path to VS_Script.py")
 
 Also, change the name of the output file appropriately. Incomplete/faulty structures would be moved to a `FAULTY_DIR` for you to look at and analyse either manually or using PyMol.
+
+If the file runs succesfully without encountering any error while compiling, the terminal output should look something like this:
+
+![Terminal_Output](Terminal_Output.png "Terminal_Output")
 
 ---
 
@@ -160,15 +164,15 @@ Also, change the name of the output file appropriately. Incomplete/faulty struct
 
 Repeat the above step with ligands on the top of `results_drugbank.csv` and you will see something like this:
 
-![Loading Protein Using PyMol](addpolarH.png " Loading Protein Using PyMol")
+![Docked ligand with protein](Docked_Pose.png "Docked ligand with protein")
 
 After saving the file obtained in the previous step, upload it to PoseView. You should see the following:
 
-![Loading Protein Using PyMol](addpolarH.png " Loading Protein Using PyMol")
+![PoseView Window](PoseView.png "PoseView Window")
 
 PoseView identifies the ligands and you can generate different 2D interaction diagrams for each ligand you wish to analyse. Using the information obtained from the 2D Interaction Diagram, we can visualise the interactions in 3D for personal visualisation or presentation on PyMol:
 
-![Loading Protein Using PyMol](addpolarH.png " Loading Protein Using PyMol")
+![Visualising Interactions on PyMol](Measurements.png "Visualising Interactions on PyMol")
 
 ---
 
