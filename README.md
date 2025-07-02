@@ -38,7 +38,7 @@ This workflow is an attempt towards democratising Virtual Screening protocols us
 
 ---
 
-# Requirements
+## Requirements
 
 To successfully run the virtual screening pipeline described in this tutorial, you will need the following:
 
@@ -53,12 +53,6 @@ To successfully run the virtual screening pipeline described in this tutorial, y
   - [DrugBank account](https://go.drugbank.com/) (for ligand libraries)
   - [CavityPlus](http://www.pkumdl.cn:8000/cavityplus/index.php), [DoGSiteScorer](https://proteins.plus/), or [FTMap](https://ftmap.bu.edu/) (for binding pocket identification)
   - [PoseView](https://proteins.plus/) (for 2D interaction diagrams)
-
-- **Python Packages:**  
-  - `pandas`
-  - `numpy`
-  - `biopython`
-  - Any additional packages as required by your scripts (see `requirements.txt` if provided)
 
 ## General Overview of the Protocol
 
