@@ -34,7 +34,7 @@ To narrow down the search space before an in vitro hit identification. Docking i
 ### Why use this pipeline?
 Several softwares have been developed for carrying out docking calculations over the years. However, most of the widely used and trusted software are often paid, not compatible with all operating systems, have buggy GUIs or don’t support multiple ligands rendering virtual screening unfeasible.
 
-This workflow is an attempt towards democratising Virtual Screening protocols using a widely used and documented docking software (Autodock Vina) combined with automation using Python and Shell scripting. Moreover, in addition to ranking the ligands based on their predicted binding affinity, this tutorial covers post-docking visualisation and generation of 2D interaction diagrams to gain a deeper understanding of the particular interactions that are important for the residues in the binding pocket of your target protein. A general validation protocol has been elucidated in [Insert repo link] to check for the accuracy of this protocol.
+This workflow is an attempt towards democratising Virtual Screening protocols using a widely used and documented docking software (Autodock Vina) combined with automation using Python and Shell scripting. Moreover, in addition to ranking the ligands based on their predicted binding affinity, this tutorial covers post-docking visualisation and generation of 2D interaction diagrams to gain a deeper understanding of the particular interactions that are important for the residues in the binding pocket of your target protein. A general validation protocol has been elucidated in [Virtual Screening Validation](https://github.com/Pratham2405/VS_Workflow_Validation) to check for the accuracy of this protocol.
 
 ---
 
