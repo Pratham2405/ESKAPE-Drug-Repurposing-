@@ -1,6 +1,32 @@
 # Virtual Screening Pipeline: In Silico Docking Workflow
 
+# Table of Contents
+
+- [Introduction](#introduction)
+- [Requirements](#requirements)
+- [General Overview of the Protocol](#general-overview-of-the-protocol)
+- [Steps of the Workflow](#steps-of-the-workflow)
+  - [RCSB PDB](#rcsb-pdb)
+  - [Visualising the Protein in PyMol](#visualising-the-protein-in-pymol)
+  - [Manual Protein Preparation on PyMol](#manual-protein-preparation-on-pymol)
+  - [Saving the Cleaned Receptor](#saving-the-cleaned-receptor)
+  - [Receptor Preparation with Open Babel](#receptor-preparation-with-open-babel)
+  - [Ligand Preparation](#ligand-preparation)
+  - [Energy Minimization](#energy-minimization)
+  - [Convert Ligands to PDBQT](#convert-ligands-to-pdbqt)
+  - [Binding Pocket: Defining the Grid Box](#binding-pocket-defining-the-grid-box)
+  - [Other Arguments of the Config. File](#other-arguments-of-the-config-file)
+  - [Running VS_Script.py](#running-vs_scriptpy)
+  - [Output Files](#output-files)
+  - [2D Interaction Diagram](#2d-interaction-diagram)
+  - [Adjustment for Running on High Performance Computing Node (HPC)](#adjustment-for-running-on-high-performance-computing-node-hpc)
+- [Citations for Tools and Software](#citations-for-tools-and-software)
+
+---
+
 ## Introduction
+This repository aims to carry out a virtual screening pipeline to counter ESKAPE pathogens which are infamous for being resistant to treatment by conventional antibiotic treatments, a phenomenon known as antibiotic resistance or AMR, which is a growing matter of concern since it leaves us with no defenses against these pathogens.
+Drug repurposing, also known as drug repositioning, is the process of identifying new therapeutic uses for existing drugs or drug candidates that were originally developed for other conditions. This approach is important because it can significantly reduce the time, cost, and risk associated with drug development compared to traditional methods, as repurposed drugs already have established safety profiles and clinical data. Drug repurposing enables faster delivery of treatments, especially during urgent health crises or for rare and neglected diseases that lack effective therapies. By leveraging known compounds, drug repurposing expands treatment options and accelerates the availability of life-saving medicines to patients in need.
 
 ### Why an in silico pipeline?
 To narrow down the search space before an in vitro hit identification. Docking is a probabilistic and empirical calculation for enriching the top of our ranked library with true positives. In other words, docking is a heuristic which gives us a better chance at selecting hits than random chance. Since in vitro testing through assays is expensive and takes time, we can prioritise our bets using a preliminary stage of docking.
@@ -12,12 +38,36 @@ This workflow is an attempt towards democratising Virtual Screening protocols us
 
 ---
 
+# Requirements
+
+To successfully run the virtual screening pipeline described in this tutorial, you will need the following:
+
+- **Operating System:**  
+  Linux, macOS, or Windows (WSL recommended for Windows users)
+
+- **Software and Tools:**  
+  - [AutoDock Vina](https://vina.scripps.edu/) (version 1.1.2 or newer)
+  - [PyMOL](https://pymol.org/) (for visualization)
+  - [Open Babel](https://openbabel.org/) (for file conversion and minimization)
+  - [Python 3.x](https://www.python.org/) (for scripting and automation)
+  - [DrugBank account](https://go.drugbank.com/) (for ligand libraries)
+  - [CavityPlus](http://www.pkumdl.cn:8000/cavityplus/index.php), [DoGSiteScorer](https://proteins.plus/), or [FTMap](https://ftmap.bu.edu/) (for binding pocket identification)
+  - [PoseView](https://proteins.plus/) (for 2D interaction diagrams)
+
+- **Python Packages:**  
+  - `pandas`
+  - `numpy`
+  - `biopython`
+  - Any additional packages as required by your scripts (see `requirements.txt` if provided)
+
 ## General Overview of the Protocol
 
 The docking workflow requires the following three input files:
 1. Cleaned Receptor (target protein) file in `.pdbqt` format.
 2. Ligand files in `.pdbqt` format.
 3. Configuration File.
+
+![Overall Flowchart of the Workflow](VS_Workflow.jpg "Overall Flowchart of the Workflow")
 
 ---
 
@@ -127,6 +177,12 @@ This method adds gasteiger charges and protonates(adds hydrogen) to the ligands 
 
 Vina requires an a priori 3D search space in the form of a grid box where it can look for favourable binding poses. This is done primarily to reduce the time required for determination of each pose. Try to keep your grid side length \< 25 Angstrom for optimal performance and ensuring specificity towards your binding pocket. To completely define the grid box, we need the coordinates of its center. More importantly, we need to find a 3D region of the protein which is most likely to favourably bind a ligand molecule, also known as the Binding Pocket of the protein. A few online tools like CavityPlus, DoGSiteScorer, FTMap can help us know the active binding site and its center coordinates.
 
+![CavityPlus window](Cavity_Plus.png "CavityPlus window")
+
+After the tool calculates proposed binding pockets, choose the one with the highest druggability score and note down the coordinates of the center to be entered in the config file.
+
+![Coordinates of the Binding Pocket center](Grid_Center.png "Coordinates of the Binding Pocket center")
+
 ---
 
 ### Other Arguments of the Config. File
@@ -180,5 +236,42 @@ PoseView identifies the ligands and you can generate different 2D interaction di
 ### Adjustment for Running on High Performance Computing Node (HPC)
 
 Docking of each molecule takes around 1–2 mins on average. Docking 10,000 ligands then, as you can probably see, will take an impractical amount of time to complete. For carrying out this script for this many ligands, you need to have access to a High Performance Computing Node. An alternate to `VS_Script.py` with suitable modifications catered to HPC has been uploaded to this repository (`VS_Script_HPC.py`). For IITD students working on the HPC, (link to Kanha repo) and (link to HPC IITD) are great resources for end-to-end implementation and troubleshooting.
+
+## Citations for Tools and Software
+
+- **AutoDock Vina**  
+  Trott, O., & Olson, A. J. (2010). AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. *Journal of Computational Chemistry*, 31(2), 455-461.
+
+- **PyMOL**  
+  The PyMOL Molecular Graphics System, Version 1.2r3pre, Schrödinger, LLC.
+
+- **Open Babel**  
+  O'Boyle, N.M., Banck, M., James, C.A., Morley, C., Vandermeersch, T., & Hutchison, G.R. (2011). Open Babel: An open chemical toolbox. *Journal of Cheminformatics*, 3, 33.
+
+- **MMFF94 Force Field**  
+  Halgren, T.A. (1996). Merck Molecular Force Field. I. Basis, form, scope, parameterization, and performance of MMFF94. *Journal of Computational Chemistry*, 17, 490-519.
+
+- **DrugBank**  
+  Wishart, D.S., et al. (2018). DrugBank 5.0: a major update to the DrugBank database for 2018. *Nucleic Acids Research*, 46(D1), D1074–D1082.
+
+- **RCSB PDB**  
+  Berman, H.M., et al. (2000). The Protein Data Bank. *Nucleic Acids Research*, 28(1), 235-242.
+
+- **CavityPlus**  
+  Xu, X., et al. (2018). CavityPlus: a web server for protein cavity detection with pharmacophore modelling, allosteric site identification and covalent ligand binding ability prediction. *Nucleic Acids Research*, 46(W1), W374–W379.
+
+- **DoGSiteScorer**  
+  Volkamer, A., et al. (2012). DoGSiteScorer: a web server for automatic binding site prediction, analysis and druggability assessment. *Bioinformatics*, 28(15), 2074–2075.
+
+- **FTMap**  
+  Kozakov, D., et al. (2015). The FTMap family of web servers for determining and characterizing ligand-binding hot spots of proteins. *Nature Protocols*, 10, 733–755.
+
+- **PoseView**  
+  Stierand, K., Maaß, P., Rarey, M. (2006). Molecular Complexes at a Glance: Automated Generation of two-dimensional Complex Diagrams. *Bioinformatics*, 22, 1710-1716.  
+  Stierand, K., Rarey, M. (2007). From Modeling to Medicinal Chemistry: Automatic Generation of Two-Dimensional Complex Diagrams. *ChemMedChem*, 2(6), 853-860.  
+  Fricker, P., Gastreich, M., and Rarey, M. (2004). Automated Generation of Structural Molecular Formulas under Constraints. *Journal of Chemical Information and Computer Sciences*, 44, 1065-1078.  
+  [PoseView User Guide, ZBH, University of Hamburg](https://www.zbh.uni-hamburg.de/en/forschung/amd/server/poseview.html)  
+  [ProteinsPlus: PoseView and PoseEdit](https://proteins.plus/help/poseview)  
+
 
 
