@@ -1,0 +1,20 @@
+
+# Search space(Grid Box)
+center_x = 6.25
+center_y = -8.5
+center_z = 21.5
+size_x = 20.0
+size_y = 20.0
+size_z = 20.0
+
+# Exhaustiveness of the global search (default 8)
+exhaustiveness = 8
+
+# Number of modes to generate (default 9)
+num_modes = 9
+
+# Energy range (maximum difference between the best binding mode and the worst one displayed)
+energy_range = 3
+
+# CPU cores to use (default is to try to detect the number of CPUs)
+cpu = 4
