@@ -131,10 +131,11 @@ Vina requires an a priori 3D search space in the form of a grid box where it can
 
 ### Other Arguments of the Config. File
 
-- `exhaustiveness`
-- `number of poses`
-- `cpus`
-- `verbosity`
+- `exhaustiveness`: Controls how thoroughly AutoDock Vina searches for binding modes, with a default value of 8; higher values increase search thoroughness but also computational time, and there is no strict upper limit, though practical values are typically between 8 and 64.
+- `number of poses`(often `num_modes`): Sets the maximum number of binding poses Vina will output per ligand, with a default of 9 and a typical range from 1 to 20 or more, though Vina may output fewer if not enough distinct poses are found.
+- `cpus`: Specifies how many CPU cores Vina should use in parallel, defaulting to 1 if not set, and can be set up to the number of logical cores available on your system to speed up calculations.(Use `sysctl -n hw.ncpu` and `ncpus` to know the number of logical cores on your system for macOS and Linux respectively)
+- `verbosity`: Determines the level of detail in Vina’s output, with a default of 1, where 0 gives minimal output and higher values (up to 2) provide more detailed logs
+- `energy_range`: Sets the maximum energy difference (in kcal/mol) from the best binding mode for output poses; only binding modes within this range of the lowest energy pose will be reported. The default value is 3.0 kcal/mol.
 
 ---
 
