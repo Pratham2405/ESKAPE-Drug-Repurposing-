@@ -42,10 +42,7 @@ This workflow is an attempt towards democratising Virtual Screening protocols us
 
 To successfully run the virtual screening pipeline described in this tutorial, you will need the following:
 
-- **Operating System:**  
-  Linux, macOS, or Windows (WSL recommended for Windows users)
-
-- **Software and Tools:**  
+- **Software and Open-Source Tools:**  
   - [AutoDock Vina](https://vina.scripps.edu/) (version 1.1.2 or newer)
   - [PyMOL](https://pymol.org/) (for visualization)
   - [Open Babel](https://openbabel.org/) (for file conversion and minimization)
