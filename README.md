@@ -219,7 +219,7 @@ If the file runs succesfully without encountering any error while compiling, the
 
 ### 2D Interaction Diagram
 
-Repeat the above step with ligands on the top of `results_drugbank.csv` and you will see something like this:
+Carrying out the above mentioned action should look something like this:
 
 ![Docked ligand with protein](Docked_Pose.png "Docked ligand with protein")
 
@@ -227,7 +227,7 @@ After saving the file obtained in the previous step, upload it to PoseView. You 
 
 ![PoseView Window](PoseView.png "PoseView Window")
 
-PoseView identifies the ligands and you can generate different 2D interaction diagrams for each ligand you wish to analyse. Using the information obtained from the 2D Interaction Diagram, we can visualise the interactions in 3D for personal visualisation or presentation on PyMol:
+PoseView identifies the ligand and you can generate a 2D interaction diagram to analyse the important interactions and finding out the important residues of the Binding Pocket taking part in stabilising the interaction. Using the information obtained from the 2D Interaction Diagram, we can visualise the interactions in 3D for personal visualisation or presentation on PyMol. This was carried out using the Measurement tool of PyMol found in the Wizard option:
 
 ![Visualising Interactions on PyMol](Measurements.png "Visualising Interactions on PyMol")
 
@@ -235,7 +235,7 @@ PoseView identifies the ligands and you can generate different 2D interaction di
 
 ### Adjustment for Running on High Performance Computing Node (HPC)
 
-Docking of each molecule takes around 1–2 mins on average. Docking 10,000 ligands then, as you can probably see, will take an impractical amount of time to complete. For carrying out this script for this many ligands, you need to have access to a High Performance Computing Node. An alternate to `VS_Script.py` with suitable modifications catered to HPC has been uploaded to this repository (`VS_Script_HPC.py`). For IITD students working on the HPC, (link to Kanha repo) and (link to HPC IITD) are great resources for end-to-end implementation and troubleshooting.
+Docking of each molecule takes around 1–2 mins on average. Docking 10,000 ligands then, as you can probably see, will take an impractical amount of time to complete. For carrying out this script for this many ligands, you need to have access to a High Performance Computing Node. An alternate to `VS_Script.py` with suitable modifications catered to HPC has been uploaded to this repository (`VS_Script_HPC.py`). For IITD students working on the HPC, [HPC IITD](https://supercomputing.iitd.ac.in) and [GitHub Repo](https://github.com/kanha95/HPC-IIT-Delhi) are great resources for end-to-end implementation and troubleshooting.
 
 ## Citations for Tools and Software
 
