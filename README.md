@@ -162,6 +162,7 @@ echo "Converted $file -> $out"
 done
 ```
 This method adds gasteiger charges and protonates(adds hydrogen) to the ligands solving the pKa values at pH \=7.4.
+
 ---
 
 ### Binding Pocket: Defining the Grid Box
